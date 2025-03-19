@@ -1,4 +1,3 @@
-
 import streamlit as st
 import torch
 import torch.nn as nn
@@ -13,14 +12,24 @@ model = DiamondModel(9)
 
 
 # Charger le modèle complet
-model = torch.load(MODEL_PATH, map_location=torch.device('cpu'))
+model = torch.load(MODEL_PATH, map_location=torch.device("cpu"))
 model.eval()
 
 # Définir les noms des colonnes d'entrée
-feature_columns = ["carat", "depth", "table", "price", "x", "y", "z", "Color", "Clarity"]
+feature_columns = [
+    "carat",
+    "depth",
+    "table",
+    "price",
+    "x",
+    "y",
+    "z",
+    "Color",
+    "Clarity",
+]
 
 # Définir les classes de sortie
-class_labels = ['Fair', 'Good', 'Ideal', 'Premium', 'Very Good']
+class_labels = ["Fair", "Good", "Ideal", "Premium", "Very Good"]
 
 st.title("Prédiction de la qualité du diamant")
 st.write("Entrez les caractéristiques du diamant pour prédire sa qualité.")

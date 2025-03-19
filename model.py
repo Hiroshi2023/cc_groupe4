@@ -17,5 +17,5 @@ if __name__ == "__main__":
 
     model = train(X_train, y_train, X_test, y_test, model)
     save_model(model, f"./models/model_final.pth")
-    
-    print('Model saved')
+
+    print("Model saved")
