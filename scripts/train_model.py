@@ -92,7 +92,7 @@ class Trainner:
                         f"Epoch:{epoch}, | Loss:{loss:.5f} | Acc={acc:.2f}% | Test Loss:{test_loss:.5f} | Test Acc:{test_acc:.2f}%"
                     )
 
-        # return model
+        return model
 
     # save the model
     def save_model(model, path):
@@ -102,5 +102,5 @@ if __name__ == '__main__':
     trainner = Trainner()
     model = DiamondModel(trainner.X_train.shape[1])
     model = trainner.train(model)
-    trainner.save_model(model, f"./models/model_final.pth")
+    trainner.save_model(model, f"../models/model_final.pth")
     print("Model saved")
