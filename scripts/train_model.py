@@ -9,7 +9,7 @@ from standardisation import standardisation, to_tensor
 class Trainner:
     def __init__(self):
         self.X_train = np.load("data/x_train.npy",allow_pickle=True)
-        self.y_train = np.load("data/y_train.npy,allow_pickle=True")
+        self.y_train = np.load("data/y_train.npy",allow_pickle=True)
         self.X_test = np.load("data/x_test.npy",allow_pickle=True)
         self.y_test = np.load("data/y_test.npy",allow_pickle=True)
         
