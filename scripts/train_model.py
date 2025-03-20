@@ -8,10 +8,10 @@ from standardisation import standardisation, to_tensor
 
 class Trainner:
     def __init__(self):
-        self.X_train = np.load("data/x_train.npy")
-        self.y_train = np.load("data/y_train.npy")
-        self.X_test = np.load("data/x_test.npy")
-        self.y_test = np.load("data/y_test.npy")
+        self.X_train = np.load("data/x_train.npy",allow_pickle=True)
+        self.y_train = np.load("data/y_train.npy",allow_pickle=True)
+        self.X_test = np.load("data/x_test.npy",allow_pickle=True)
+        self.y_test = np.load("data/y_test.npy",allow_pickle=True)
         
         self.X_train_t = to_tensor(standardisation(self.X_train))
         self.X_test_t = to_tensor(standardisation(self.X_test))
