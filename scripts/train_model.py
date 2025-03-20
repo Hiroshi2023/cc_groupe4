@@ -19,12 +19,6 @@ class Trainner:
         print(f"X_train contient NaN ? {np.isnan(self.X_train).any()}")
         print(f"y_train contient NaN ? {np.isnan(self.y_train).any()}")
 
-        # 🚨 Correction des NaN en les remplaçant par la moyenne
-        if np.isnan(self.X_train).any():
-            self.X_train = np.nan_to_num(self.X_train, nan=np.nanmean(self.X_train))
-        if np.isnan(self.X_test).any():
-            self.X_test = np.nan_to_num(self.X_test, nan=np.nanmean(self.X_test))
-
         # 📏 Assurer que X_train et X_test sont bien en 2D
         if self.X_train.ndim == 1:
             self.X_train = self.X_train.reshape(-1, 1)
