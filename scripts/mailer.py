@@ -68,4 +68,4 @@ if __name__ == "__main__":
         subject="Modèle et Documentation",
         body="Veuillez trouver ci-joint le modèle et la documentation générés."
     )
-    sender.send_email("output.zip")
+    sender.send_email("Okay")
