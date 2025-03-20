@@ -64,15 +64,15 @@ class PreprocessingPipeline:
         output_dir = os.path.join(os.getcwd(), "data")
         os.makedirs(output_dir, exist_ok=True)
 
-        np.save(os.path.join(output_dir, "x_train.npy"), self.x_train)
-        np.save(os.path.join(output_dir, "x_test.npy"), self.x_test)
-        np.save(os.path.join(output_dir, "y_train.npy"), self.y_train)
-        np.save(os.path.join(output_dir, "y_test.npy"), self.y_test)
+        np.save(os.path.join(output_dir, "x_train.npy"), X_train)
+        np.save(os.path.join(output_dir, "x_test.npy"), X_test)
+        np.save(os.path.join(output_dir, "y_train.npy"), y_train)
+        np.save(os.path.join(output_dir, "y_test.npy"), y_test)
 
         return X_train, X_test, y_train, y_test
 
 if __name__ == "__main__":
-    path = "../data/diamonds.csv"
+    path = "data/diamonds.csv"
 
     pipeline = PreprocessingPipeline(path)
     pipeline.preprocessing()
