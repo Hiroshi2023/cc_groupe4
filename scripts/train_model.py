@@ -102,5 +102,5 @@ if __name__ == '__main__':
     trainner = Trainner()
     model = DiamondModel(trainner.X_train.shape[1])
     model = trainner.train(model)
-    trainner.save_model(model, f"../models/model_final.pth")
+    # trainner.save_model(model, f"../models/model_final.pth")
     print("Model saved")
