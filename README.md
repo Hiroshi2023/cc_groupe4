@@ -1,6 +1,5 @@
-# 📊 Projet de Prédiction du Prix des Diamants avec PyTorch  
-**Groupe 4** : TEUGA Ulirch, HiroSHI, TATSA Colince  
-*Date du projet* : 14/03/2025 
+# 📊 Projet de Prédiction de la qualite des Diamants avec PyTorch  
+**Groupe 4** : TEUGA Ulirch, Yewo Hiroshi, TATSA Colince  
 
 ---
 
