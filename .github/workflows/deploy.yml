@@ -85,7 +85,7 @@ jobs:
         ); \
         api.upload_folder(
             folder_path='.', 
-            repo_id='Hiroshi2023/cc_groupe4', 
+            repo_id='Hiroshi99/cc_groupe', 
             repo_type='space', 
             commit_message='Auto-deploy from GitHub Actions'
         )"
