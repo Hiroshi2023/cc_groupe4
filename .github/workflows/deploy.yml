@@ -1,4 +1,4 @@
-name: Deploy to Hugging Face
+name: CI/CD with Hugging Face Hub
 
 on:
   # Déclenche le workflow sur chaque push dans la branche "main".
@@ -23,9 +23,27 @@ jobs:
       # Étape 2 : Configure Python 3.11.5 dans l'environnement GitHub Actions 
       # pour installer et exécuter du code Python.
 
+    - name: Install Git LFS
+      run: |
+        git lfs install
+        git lfs fetch --all
+        git lfs checkout
+        git lfs pull
+      # Étape 2.1 : Installe Git LFS pour gérer les fichiers volumineux 
+      # (par exemple, les modèles de Machine Learning) stockés dans le dépôt.
+
+    - name: Verify LFS Checkout
+      run: |
+        echo "Listing data directory:"
+        ls -lh data/
+        echo "First 10 lines of diabetes.csv:"
+        head -n 10 data/diabetes.csv
+      # Étape 2.2 : Vérifie que les fichiers Git LFS ont été correctement récupérés 
+      # et peuvent être utilisés dans les étapes suivantes.
+
     - name: Install Hugging Face Hub
       run: pip install huggingface_hub
-      # Étape 2.1 : Installer manuellement huggingface_hub pour les commandes subsequentes.
+      # Étape 2.3 : Installer manuellement huggingface_hub pour les commandes subsequentes.
 
     - name: Install Dependencies
       run: |
@@ -34,6 +52,25 @@ jobs:
       # Étape 3 : Installe les dépendances listées dans requirements.txt
       # Double check huggingface_hub availability
       # (notamment huggingface_hub, Streamlit, etc.).
+
+    - name: Load and preprocess data
+      run: python scripts/load_data.py
+      # Étape 4 : Exécute le script de prétraitement des données 
+      # pour charger et nettoyer les données.
+
+    - name: Train models
+      run: python scripts/train_models.py
+      # Étape 5 : Exécute le script d'entraînement des modèles 
+      # pour créer des modèles de Machine Learning.
+
+    - name: Rendre le script exécutable
+      run: chmod +x run_doc.sh
+
+    - name: Generate documentation
+      run: ./run_doc.sh
+
+    - name: Send Email with Model and Documentation
+      run: python Scripts/send_email.py
 
     - name: Push to Hugging Face Hub
       env:
