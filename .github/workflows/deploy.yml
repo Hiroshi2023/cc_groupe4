@@ -36,8 +36,8 @@ jobs:
       run: |
         echo "Listing data directory:"
         ls -lh data/
-        echo "First 10 lines of diabetes.csv:"
-        head -n 10 data/diabetes.csv
+        echo "First 10 lines of diamonds.csv:"
+        head -n 10 data/diamonds.csv
       # Étape 2.2 : Vérifie que les fichiers Git LFS ont été correctement récupérés 
       # et peuvent être utilisés dans les étapes suivantes.
 
@@ -59,22 +59,16 @@ jobs:
       # pour charger et nettoyer les données.
 
     - name: Train models
-      run: python scripts/train_models.py
+      run: python scripts/train_model.py
       # Étape 5 : Exécute le script d'entraînement des modèles 
       # pour créer des modèles de Machine Learning.
 
-    - name: Rendre le script exécutable
-      run: chmod +x run_doc.sh
-
-    - name: Generate documentation
-      run: ./run_doc.sh
-
     - name: Send Email with Model and Documentation
-      run: python Scripts/send_email.py
+      run: python Scripts/mailer.py
 
     - name: Push to Hugging Face Hub
       env:
-        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        HF_TOKEN: ${{ secrets.TOKEN }}
       run: |
         # Étape 4 : Utilise la librairie huggingface_hub pour :
         #  1) Créer un Space (si inexistant) 
@@ -83,7 +77,7 @@ jobs:
         api = HfApi(token='$HF_TOKEN'); \
 
         create_repo(
-            repo_id='TeKuV/cc-github-group4',
+            repo_id='Hiroshi99/cc_groupe',
             repo_type='space',
             space_sdk='streamlit',
             exist_ok=True,
@@ -91,7 +85,7 @@ jobs:
         ); \
         api.upload_folder(
             folder_path='.', 
-            repo_id='TeKuV/cc-github-group4', 
+            repo_id='Hiroshi2023/cc_groupe4', 
             repo_type='space', 
             commit_message='Auto-deploy from GitHub Actions'
         )"

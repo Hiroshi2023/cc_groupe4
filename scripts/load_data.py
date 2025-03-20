@@ -9,7 +9,10 @@ class PreprocessingPipeline:
     def __init__(self, path):
         self.path = path
         self.data = pd.read_csv(self.path)
-
+        self.x_train=None
+        self.x_test=None
+        self.y_train=None
+        self.y_test=None
     def preprocessing(self):
         # Compte des lignes dupliquées et non dupliquées
         self.data.duplicated().value_counts()

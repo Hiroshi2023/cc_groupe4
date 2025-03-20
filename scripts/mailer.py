@@ -59,6 +59,7 @@ if __name__ == "__main__":
     recipients = [
         "teugaulrich@gmail.com",
         "colincetatsa@gmail.com",
+        "hiroshiyewo@gmail.com",
     ]  # liste des emails
     sender = Mailer(
         smtp_user="brainsystemprojects@gmail.com",
