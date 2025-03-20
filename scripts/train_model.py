@@ -13,16 +13,11 @@ class Trainner:
         self.X_test = np.load("data/x_test.npy",allow_pickle=True)
         self.y_test = np.load("data/y_test.npy",allow_pickle=True)
 
-        # 📏 Assurer que X_train et X_test sont bien en 2D
-        if self.X_train.ndim == 1:
-            self.X_train = self.X_train.reshape(-1, 1)
-        if self.X_test.ndim == 1:
-            self.X_test = self.X_test.reshape(-1, 1)
         
         self.X_train_t = to_tensor(standardisation(self.X_train))
         self.X_test_t = to_tensor(standardisation(self.X_test))
-        self.y_train_t = to_tensor(self.y_train).long()
-        self.y_test_t = to_tensor(self.y_test).long()
+        self.y_train_t = to_tensor(self.y_train)
+        self.y_test_t = to_tensor(self.y_test)
 
     # Methode d'exactitude modifiée pour la classification multiclasse
     def accuracy_fn(self, y_true, y_pred):
