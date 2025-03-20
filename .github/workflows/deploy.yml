@@ -64,7 +64,7 @@ jobs:
       # pour créer des modèles de Machine Learning.
 
     - name: Send Email with Model and Documentation
-      run: python Scripts/mailer.py
+      run: python scripts/mailer.py
 
     - name: Push to Hugging Face Hub
       env:
