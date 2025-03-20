@@ -8,12 +8,15 @@ from scripts.DiamondModel import DiamondModel
 # Charger le modèle sauvegardé
 MODEL_PATH = "./models/model_final.pth"
 
+# Créer une instance du modèle (avec le bon nombre d'entrées)
 model = DiamondModel(9)
 
+# Charger les poids sauvegardés
+model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device("cpu")))
 
-# Charger le modèle complet
-model = torch.load(MODEL_PATH, map_location=torch.device("cpu"))
+#  Passer en mode évaluation
 model.eval()
+
 
 # Définir les noms des colonnes d'entrée
 feature_columns = [
