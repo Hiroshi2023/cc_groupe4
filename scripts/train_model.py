@@ -3,7 +3,7 @@ import numpy as np
 import torch.nn as nn
 import torch.optim as optim
 from DiamondModel import DiamondModel
-from scripts.standardisation import standardisation, to_tensor
+from standardisation import standardisation, to_tensor
 
 
 class Trainner:
