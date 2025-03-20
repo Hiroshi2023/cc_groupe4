@@ -13,12 +13,6 @@ class Trainner:
         self.X_test = np.load("data/x_test.npy",allow_pickle=True)
         self.y_test = np.load("data/y_test.npy",allow_pickle=True)
 
-        # Vérification des données chargées
-        print(f"X_train shape: {self.X_train.shape}, X_test shape: {self.X_test.shape}")
-        print(f"y_train shape: {self.y_train.shape}, y_test shape: {self.y_test.shape}")
-        print(f"X_train contient NaN ? {np.isnan(self.X_train).any()}")
-        print(f"y_train contient NaN ? {np.isnan(self.y_train).any()}")
-
         # 📏 Assurer que X_train et X_test sont bien en 2D
         if self.X_train.ndim == 1:
             self.X_train = self.X_train.reshape(-1, 1)
