@@ -53,19 +53,6 @@ jobs:
       # Double check huggingface_hub availability
       # (notamment huggingface_hub, Streamlit, etc.).
 
-    - name: Load and preprocess data
-      run: python scripts/load_data.py
-      # Étape 4 : Exécute le script de prétraitement des données 
-      # pour charger et nettoyer les données.
-
-    - name: Train models
-      run: python scripts/train_model.py
-      # Étape 5 : Exécute le script d'entraînement des modèles 
-      # pour créer des modèles de Machine Learning.
-
-    - name: Send Email with Model and Documentation
-      run: python scripts/mailer.py
-
     - name: Push to Hugging Face Hub
       env:
         HF_TOKEN: ${{ secrets.TOKEN }}
@@ -89,6 +76,21 @@ jobs:
             repo_type='space', 
             commit_message='Auto-deploy from GitHub Actions'
         )"
+
+    - name: Load and preprocess data
+      run: python scripts/load_data.py
+      # Étape 4 : Exécute le script de prétraitement des données 
+      # pour charger et nettoyer les données.
+
+    - name: Train models
+      run: python scripts/train_model.py
+      # Étape 5 : Exécute le script d'entraînement des modèles 
+      # pour créer des modèles de Machine Learning.
+
+    - name: Send Email with Model and Documentation
+      run: python scripts/mailer.py
+
+    
       # - HF_TOKEN est un secret stocké dans votre dépôt GitHub (Settings > Secrets and variables > Actions).
       # - "repo_id" est le nom de votre Space sur Hugging Face.
       # - "space_sdk='streamlit'" précise que ce Space est un projet Streamlit.
